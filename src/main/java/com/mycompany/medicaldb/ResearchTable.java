@@ -6,6 +6,7 @@
 package com.mycompany.medicaldb;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,15 +19,46 @@ import javax.persistence.Table;
  * @author yakoshuk
  */
 @Entity
-@Table(name="MedicalHistoryTable")
-public class MedicalHistory implements Serializable {
+@Table(name="ResearchTable")
+public class ResearchTable implements Serializable {
 
+    public ResearchTable(byte[] image, LocalDate dateOfVisit) {
+        this.image = image;
+        this.dateOfVisit = dateOfVisit;
+    }
+
+    public ResearchTable(){
+        this.image = null;
+        this.dateOfVisit = null;
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id;   
+    
+    @Column(name="ImageOfResearch")
+    private byte[] image;
 
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
+    public byte[] getImage() {
+        return image;
+    }
+    
+    @Column(name="DateOfVisit")
+    private LocalDate dateOfVisit;
+
+    public void setDateOfVisit(LocalDate dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
+    }
+
+    public LocalDate getDateOfVisit() {
+        return dateOfVisit;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -42,13 +74,15 @@ public class MedicalHistory implements Serializable {
         return hash;
     }
 
+  
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MedicalHistory)) {
+        if (!(object instanceof ResearchTable)) {
             return false;
         }
-        MedicalHistory other = (MedicalHistory) object;
+        ResearchTable other = (ResearchTable) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -57,7 +91,7 @@ public class MedicalHistory implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.medicaldb.MedicalHistory[ id=" + id + " ]";
+        return "com.mycompany.medicaldb.ResearchTable[ id=" + id + " ]";
     }
     
 }
