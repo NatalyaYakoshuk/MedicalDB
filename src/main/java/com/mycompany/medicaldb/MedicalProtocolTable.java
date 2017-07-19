@@ -22,14 +22,14 @@ import javax.persistence.Table;
 @Table(name="MedicalProtocolTable")
 public class MedicalProtocolTable implements Serializable {
 
-    public MedicalProtocolTable(String nameOfResearch, String content, LocalDate dateOfVisit) {
-        this.nameOfResearch = nameOfResearch;
+    public MedicalProtocolTable(String nameOfResearch, String content, String dateOfVisit) {
+        this.nameOfProtocol = nameOfResearch;
         this.content = content;
         this.dateOfVisit = dateOfVisit;
     }
     
     public MedicalProtocolTable(){
-        this.nameOfResearch = null;
+        this.nameOfProtocol = null;
         this.content = null;
         this.dateOfVisit = null;
     }
@@ -37,16 +37,16 @@ public class MedicalProtocolTable implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     
     @Column(name="NameOfProtocol")
-    private String nameOfResearch;
+    private String nameOfProtocol;
     
      @Column(name="Content")
     private String content;
      
      @Column(name="DateOfVisit")
-    private LocalDate dateOfVisit;
+    private String dateOfVisit;
 
      
        public void setContent(String text)
@@ -59,26 +59,26 @@ public class MedicalProtocolTable implements Serializable {
     }
     
     public void setNameOfResearch(String name){
-        this.nameOfResearch = name;
+        this.nameOfProtocol = name;
     }
     
     public String getNameOfResearch(){
-        return this.nameOfResearch;
+        return this.nameOfProtocol;
     }
     
-    public void setDateOfVisit(LocalDate date){
+    public void setDateOfVisit(String date){
         this.dateOfVisit = date;
     }
     
-    public LocalDate getDateOfVisit(){
+    public String getDateOfVisit(){
         return this.dateOfVisit;
     }
      
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -106,7 +106,7 @@ public class MedicalProtocolTable implements Serializable {
     
     @Override
     public String toString() {
-        return dateOfVisit.toString()+" "+nameOfResearch+" "+content;
+        return dateOfVisit.toString()+"@"+nameOfProtocol+"@"+content;
     }
     
 }

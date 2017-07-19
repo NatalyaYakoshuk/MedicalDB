@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name="ServiceAndDiagnosisTable")
 public class ServiceAndDiagnosisTable implements Serializable {
 
-    public ServiceAndDiagnosisTable(LocalDate dateOfVisit, String diagnosis, String services) {
+    public ServiceAndDiagnosisTable(String dateOfVisit, String diagnosis, String services) {
         this.dateOfVisit = dateOfVisit;
         this.diagnosis = diagnosis;
         this.services = services;
@@ -40,7 +40,7 @@ public class ServiceAndDiagnosisTable implements Serializable {
     private Long id;
     
     @Column(name="DateOfVisit")
-    private LocalDate dateOfVisit;
+    private String dateOfVisit;
     
     @Column(name="Diagnosis")
     private String diagnosis;
@@ -48,7 +48,7 @@ public class ServiceAndDiagnosisTable implements Serializable {
     @Column(name="Services")
     private String services;
 
-    public void setDateOfVisit(LocalDate dateOfVisit) {
+    public void setDateOfVisit(String dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
     }
 
@@ -60,7 +60,7 @@ public class ServiceAndDiagnosisTable implements Serializable {
         this.services = services;
     }
 
-    public LocalDate getDateOfVisit() {
+    public String getDateOfVisit() {
         return dateOfVisit;
     }
 
@@ -102,7 +102,7 @@ public class ServiceAndDiagnosisTable implements Serializable {
 
     @Override
     public String toString() {
-        return dateOfVisit+" "+diagnosis+" "+services;
+        return dateOfVisit+"@"+diagnosis+"@"+services;
     }
     
 }
