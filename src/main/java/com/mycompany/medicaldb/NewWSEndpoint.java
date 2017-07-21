@@ -51,10 +51,11 @@ public class NewWSEndpoint {
     
     @PostConstruct
     public void init() {
-        try (Connection connection = datasource.getConnection()) {                 
+        try (Connection connection = datasource.getConnection()) { 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
         MedicalProtocolTable protocol1 = em.merge(new MedicalProtocolTable("Осмотр хирурга", "Обширное кровоизлияние в область ушиба", "2017-12-13"));
         MedicalProtocolTable protocol2 = em.merge(new MedicalProtocolTable("Осмотр хирурга", "Опухоль в области ушиба спала. Кожные покровы нормальные", "2017-12-20"));
         MedicalProtocolTable protocol3 = em.merge(new MedicalProtocolTable("Осмотр отоларинголога", "Больной жалуется на боль в горле, миндалины увеличенные, слизистая отечная", "2016-10-20"));
